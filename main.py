@@ -2,6 +2,14 @@
 import os
 import time
 
+suffixes_libraries = {
+    "C#": ["cs"],
+    "Python": ["py", "pyw"],
+    "C": ["h", "c"],
+    "C++": ["h", "hpp", "hxx", "cpp", "cxx", "cc", "c", "c++"],
+    "Visual Basic": ["vb"],
+}
+
 
 def code_counter(path, suffixes):
     code_line_number = 0
