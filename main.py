@@ -32,7 +32,10 @@ while True:
     print("=========================")
     print()
     language_type = input("请输入你的语言类型")
-    if language_type == "exit":
+    if not language_type.lower() in suffixes_libraries:
+        print("未知语言:" + language_type)
+        continue
+    elif language_type == "exit":
         break
     elif language_type == "debug":
         print("Debug mode " + str(not is_debug) + ".")
@@ -44,12 +47,8 @@ while True:
     print()
     start_time = time.time()
 
-    if language_type.lower() in suffixes_libraries:
-        result = code_counter(code_path, suffixes_libraries[language_type])
-        print("该项目共" + str(result[0]) + "个文件," + str(result[1]) + "行代码")
-    else:
-        print("未知语言:" + language_type)
-        continue
+    result = code_counter(code_path, suffixes_libraries[language_type])
+    print("该项目共" + str(result[0]) + "个文件," + str(result[1]) + "行代码")
 
     end_time = time.time()
     total_time = end_time - start_time
